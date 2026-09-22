@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P N KISHAN | Video Editor & Content Creator</title>
+    <title>P N KISHAN | Video Editor & BCA Developer</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
+        /* ==================== STRICT 2-COLOR THEME VARIABLES ==================== */
         :root {
+            /* Base Dark Slate Palette */
             --bg-dark: #07070a;
-            --bg-card: #111118;
-            --bg-card-hover: #181824;
-            --accent-pink: #ff4d8d;
-            --accent-purple: #7928ca;
-            --text-main: #ffffff;
-            --text-muted: #a1a1aa;
-            --border-light: rgba(255, 255, 255, 0.08);
-            --gradient-primary: linear-gradient(135deg, #ff4d8d 0%, #7928ca 100%);
+            --bg-card: #11111a;
+            --bg-card-hover: #181826;
+            --border-color: rgba(192, 132, 252, 0.15);
+            
+            /* Primary Theme Colors: PURE WHITE & LAVENDER */
+            --color-white: #ffffff;
+            --color-lavender: #c084fc;
+            --color-lavender-glow: rgba(192, 132, 252, 0.35);
+            --color-lavender-dim: rgba(192, 132, 252, 0.1);
+            --color-muted: #94a3b8;
+            
+            /* Fonts */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
         }
 
+        /* ==================== RESET & BASE ==================== */
         * {
             margin: 0;
             padding: 0;
@@ -28,172 +40,293 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: var(--font-body);
             background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
+            color: var(--color-white);
+            line-height: 1.7;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, var(--color-lavender-dim) 0%, transparent 40%),
+                radial-gradient(circle at 85% 75%, var(--color-lavender-dim) 0%, transparent 45%);
         }
 
-        /* ================= NAVIGATION ================= */
+        /* Typography Utilities */
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-heading);
+            color: var(--color-white);
+        }
+
+        .lavender-text {
+            color: var(--color-lavender);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px var(--color-lavender-dim); }
+            50% { box-shadow: 0 0 40px var(--color-lavender-glow); }
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+
+        .animated-glow {
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+
+        /* ==================== NAVIGATION ==================== */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 18px 8%;
+            padding: 20px 0;
+            background: rgba(7, 7, 10, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        nav .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(7, 7, 10, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-light);
         }
 
         nav .logo {
-            font-size: 1.3rem;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: var(--color-white);
         }
 
         nav .logo span {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--color-lavender);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: var(--color-muted);
             font-weight: 500;
-            margin-left: 32px;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--text-main);
+            color: var(--color-lavender);
         }
 
-        .nav-cta {
-            background: var(--gradient-primary);
-            padding: 8px 18px;
-            border-radius: 20px;
-            color: #fff !important;
-            font-weight: 600 !important;
+        .nav-btn {
+            border: 1px solid var(--color-lavender);
+            padding: 8px 20px;
+            border-radius: 30px;
+            color: var(--color-white) !important;
+            background: var(--color-lavender-dim);
+            transition: 0.3s ease;
         }
 
-        /* ================= HERO ================= */
+        .nav-btn:hover {
+            background: var(--color-lavender);
+            color: #000 !important;
+            box-shadow: 0 0 20px var(--color-lavender-glow);
+        }
+
+        /* ==================== HERO ==================== */
         header {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            padding: 180px 0 100px;
             position: relative;
-            padding: 120px 20px 60px;
-            background: 
-                radial-gradient(circle at 50% 30%, rgba(255, 77, 141, 0.15), transparent 60%),
-                radial-gradient(circle at 80% 80%, rgba(121, 40, 202, 0.12), transparent 50%);
         }
 
-        .hero-content {
-            max-width: 850px;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
         }
 
-        .badge {
-            display: inline-block;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 6px 16px;
-            background: rgba(255, 77, 141, 0.1);
-            border: 1px solid rgba(255, 77, 141, 0.3);
+            background: var(--color-lavender-dim);
+            border: 1px solid var(--border-color);
             border-radius: 30px;
             font-size: 0.85rem;
-            color: var(--accent-pink);
+            color: var(--color-lavender);
             font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
+            margin-bottom: 24px;
         }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-lavender);
             border-radius: 50%;
-            padding: 4px;
-            background: var(--gradient-primary);
-            box-shadow: 0 0 35px rgba(255, 77, 141, 0.3);
-            margin-bottom: 25px;
+            box-shadow: 0 0 10px var(--color-lavender);
         }
 
         header h1 {
-            font-size: clamp(2.5rem, 6vw, 4.8rem);
-            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
             line-height: 1.1;
+            font-weight: 800;
             margin-bottom: 20px;
             letter-spacing: -1px;
-        }
-
-        header h1 span {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         header p {
             font-size: 1.15rem;
             color: var(--text-muted);
             margin-bottom: 35px;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 600px;
         }
 
-        .hero-btns {
+        .hero-actions {
             display: flex;
-            gap: 15px;
-            justify-content: center;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .btn {
+            display: inline-block;
             padding: 14px 32px;
             border-radius: 30px;
             font-weight: 600;
             font-size: 0.95rem;
             text-decoration: none;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .btn-primary {
-            background: var(--gradient-primary);
-            color: #fff;
-            box-shadow: 0 10px 25px rgba(255, 77, 141, 0.25);
+            background: var(--color-lavender);
+            color: #000;
+            box-shadow: 0 0 25px var(--color-lavender-glow);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255, 77, 141, 0.4);
+            background: #d8b4fe;
+            box-shadow: 0 0 35px var(--color-lavender-glow);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-main);
-            border: 1px solid var(--border-light);
+            background: transparent;
+            color: var(--color-white);
+            border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--color-lavender);
+            background: var(--color-lavender-dim);
             transform: translateY(-3px);
         }
 
-        /* ================= COMMON SECTION ================= */
+        .hero-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-lavender), transparent);
+            animation: scanline 6s infinite linear;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .profile-img-container {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid var(--color-lavender);
+            padding: 3px;
+            background: var(--color-lavender-dim);
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-title h3 {
+            font-size: 1.3rem;
+        }
+
+        .profile-title p {
+            font-size: 0.85rem;
+            color: var(--color-lavender);
+            margin-bottom: 0;
+        }
+
+        .tech-spec-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tech-spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 0.88rem;
+        }
+
+        .tech-spec-item span:first-child {
+            color: var(--color-muted);
+        }
+
+        .tech-spec-item span:last-child {
+            color: var(--color-white);
+            font-family: monospace;
+            font-weight: 600;
+        }
+
+        /* ==================== COMMON SECTIONS ==================== */
         section {
-            padding: 100px 8%;
-            max-width: 1300px;
-            margin: 0 auto;
+            padding: 100px 0;
         }
 
         .section-header {
@@ -202,499 +335,740 @@
         }
 
         .section-header h2 {
-            font-size: 2.4rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 700;
             letter-spacing: -0.5px;
+            margin-bottom: 15px;
         }
 
-        .section-header h2 span {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .section-header p {
+            color: var(--color-muted);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .section-line {
             width: 50px;
-            height: 4px;
-            background: var(--gradient-primary);
-            margin: 15px auto 0;
+            height: 3px;
+            background: var(--color-lavender);
+            margin: 20px auto 0;
             border-radius: 10px;
+            box-shadow: 0 0 10px var(--color-lavender);
         }
 
-        /* ================= ABOUT ================= */
-        .about-grid {
+        /* ==================== BCA & COMPUTER SCIENCE INTEGRATION ==================== */
+        .bca-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
-        .about-card {
+        .bca-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 40px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .about-card p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
+        .bca-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-lavender);
+            background: var(--bg-card-hover);
+            box-shadow: 0 10px 30px var(--color-lavender-dim);
+        }
+
+        .bca-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-lavender-dim);
+            border: 1px solid var(--color-lavender);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 24px;
+            color: var(--color-lavender);
+        }
+
+        .bca-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+        }
+
+        .bca-card p {
+            color: var(--color-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
             margin-bottom: 20px;
-            line-height: 1.8;
         }
 
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+        .bca-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        .stat-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 25px;
-            text-align: center;
+        .bca-tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            color: var(--color-lavender);
+            font-family: monospace;
         }
 
-        .stat-box h3 {
-            font-size: 2rem;
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-box p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        /* ================= SKILLS & TOOLS ================= */
-        .skills-grid {
+        /* ==================== VIDEO EDITING SPECIALIZATIONS ==================== */
+        .skills-matrix {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
-        .skill-card {
+        .skill-box {
             background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 35px 30px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(255, 77, 141, 0.4);
-            background: var(--bg-card-hover);
-        }
-
-        .skill-icon {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .skill-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .skill-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Software Tags */
-        .tools-wrapper {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .tools-wrapper h4 {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .tool-tags {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-light);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* ================= PORTFOLIO / WORK ================= */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .portfolio-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            overflow: hidden;
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 18px;
             transition: 0.3s ease;
         }
 
-        .portfolio-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255, 77, 141, 0.3);
+        .skill-box:hover {
+            border-color: var(--color-lavender);
+            transform: translateY(-5px);
         }
 
-        .portfolio-thumb {
-            width: 100%;
-            height: 200px;
-            background: #1d1d28;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 3rem;
+        .skill-number {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-lavender);
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .skill-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .skill-box p {
+            color: var(--color-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ==================== EDITING WORKFLOW PIPELINE ==================== */
+        .workflow-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
             position: relative;
         }
 
-        .portfolio-info {
-            padding: 20px;
-        }
-
-        .portfolio-info h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-
-        .portfolio-info p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* ================= CONTACT ================= */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 40px;
+        .workflow-step {
             background: var(--bg-card);
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .workflow-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            width: 30px;
+            height: 3px;
+            background: var(--color-lavender);
+            box-shadow: 0 0 10px var(--color-lavender);
+        }
+
+        .workflow-step h4 {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .workflow-step p {
+            color: var(--color-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ==================== COST & PROJECT CALCULATOR ==================== */
+        .calculator-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .calc-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .calc-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--color-white);
+        }
+
+        .calc-slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+            accent-color: var(--color-lavender);
+        }
+
+        .calc-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .calc-btn {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--color-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-align: center;
+        }
+
+        .calc-btn.active, .calc-btn:hover {
+            border-color: var(--color-lavender);
+            color: var(--color-white);
+            background: var(--color-lavender-dim);
+        }
+
+        .calc-output {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .price-display {
+            font-family: var(--font-heading);
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--color-lavender);
+            margin: 20px 0;
+            text-shadow: 0 0 20px var(--color-lavender-dim);
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .contact-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 24px;
             padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
         }
 
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
-        .contact-info p {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .info-item {
+        .contact-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 18px;
         }
 
-        .info-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 77, 141, 0.1);
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-lavender-dim);
+            border: 1px solid var(--color-lavender);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            color: var(--accent-pink);
+            color: var(--color-lavender);
         }
 
-        .info-text a {
-            color: var(--text-main);
+        .contact-text span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--color-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-text a {
+            color: var(--color-white);
             text-decoration: none;
+            font-size: 1.1rem;
             font-weight: 600;
             transition: 0.3s;
         }
 
-        .info-text a:hover {
-            color: var(--accent-pink);
+        .contact-text a:hover {
+            color: var(--color-lavender);
         }
 
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .form-group {
+            margin-bottom: 20px;
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 14px 18px;
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            color: #fff;
+            color: var(--color-white);
             font-family: inherit;
-            font-size: 0.95rem;
             outline: none;
             transition: 0.3s;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--accent-pink);
-            background: rgba(255, 255, 255, 0.05);
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--color-lavender);
+            box-shadow: 0 0 15px var(--color-lavender-dim);
         }
 
         .form-group textarea {
-            resize: vertical;
             min-height: 120px;
+            resize: vertical;
         }
 
-        /* ================= FOOTER ================= */
+        /* ==================== FOOTER ==================== */
         footer {
-            background: #040406;
-            padding: 40px 8%;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
             text-align: center;
-            color: var(--text-muted);
+            color: var(--color-muted);
             font-size: 0.9rem;
-            border-top: 1px solid var(--border-light);
         }
 
         footer a {
-            color: var(--text-muted);
+            color: var(--color-white);
             text-decoration: none;
-            margin: 0 12px;
+            margin: 0 10px;
             transition: 0.3s;
         }
 
         footer a:hover {
-            color: var(--accent-pink);
+            color: var(--color-lavender);
         }
 
-        /* ================= RESPONSIVE ================= */
-        @media (max-width: 900px) {
-            .about-grid, .contact-container {
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 992px) {
+            .hero-grid, .calculator-container, .contact-box {
                 grid-template-columns: 1fr;
             }
-            
-            nav .nav-links {
-                display: none; /* Can be expanded to mobile menu */
+            .nav-links {
+                display: none; /* Can be toggled with mobile JS if needed */
             }
-
-            section {
-                padding: 70px 6%;
-            }
-
-            .contact-container {
-                padding: 30px;
+            header h1 {
+                font-size: 2.8rem;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- ================= NAVIGATION ================= -->
-<nav>
-    <div class="logo">
-        KISHAN<span>.</span>
-    </div>
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#portfolio">Work</a>
-        <a href="#services">Services</a>
-        <a href="#contact" class="nav-cta">Let's Talk</a>
-    </div>
-</nav>
-
-<!-- ================= HERO ================= -->
-<header>
-    <div class="hero-content">
-        <span class="badge">AVAILABLE FOR FREELANCE & PROJECTS</span>
-        <br>
-        <img src="IMG_0514.JPG.jpeg" alt="P N Kishan" class="profile-img">
-        
-        <h1>P N <span>KISHAN</span></h1>
-        <p>Video Editor & BCA Student transforming raw footage into high-impact visual stories, cinematic edits, and viral short-form media.</p>
-        
-        <div class="hero-btns">
-            <a href="#portfolio" class="btn btn-primary">View My Work</a>
-            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">KISHAN<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#bca-tech">BCA & CS Tech</a></li>
+                <li><a href="#skills">Editing Skills</a></li>
+                <li><a href="#workflow">Workflow</a></li>
+                <li><a href="#calculator">Estimator</a></li>
+                <li><a href="#contact" class="nav-btn">Get In Touch</a></li>
+            </ul>
         </div>
-    </div>
-</header>
+    </nav>
 
-<!-- ================= ABOUT ================= -->
-<section id="about">
-    <div class="section-header">
-        <h2>About <span>Me</span></h2>
-        <div class="section-line"></div>
-    </div>
-
-    <div class="about-grid">
-        <div class="about-card">
-            <p>I am a passionate Video Editor and Bachelor of Computer Applications (BCA) student focused on blending technical expertise with creative visual storytelling.</p>
-            <p>With a deep understanding of pacing, motion design, sound editing, and color grading, I help brands and content creators elevate their narrative through engaging visual edits.</p>
-        </div>
-        <div class="about-stats">
-            <div class="stat-box">
-                <h3>BCA</h3>
-                <p>Computer Applications Student</p>
-            </div>
-            <div class="stat-box">
-                <h3>100%</h3>
-                <p>Creative Dedication</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= SKILLS & TOOLS ================= -->
-<section id="skills">
-    <div class="section-header">
-        <h2>My <span>Expertise</span></h2>
-        <div class="section-line"></div>
-    </div>
-
-    <div class="skills-grid">
-        <div class="skill-card">
-            <span class="skill-icon">🎬</span>
-            <h3>Post-Production & Editing</h3>
-            <p>Seamless cutting, dynamic transitions, pacing adjustment, and structuring narratives to maintain viewer retention.</p>
-        </div>
-
-        <div class="skill-card">
-            <span class="skill-icon">📱</span>
-            <h3>Short-Form Content</h3>
-            <p>Engaging Instagram Reels, YouTube Shorts, and TikTok style editing with dynamic captions, sound design, and hooks.</p>
-        </div>
-
-        <div class="skill-card">
-            <span class="skill-icon">✨</span>
-            <h3>Visual Effects & Titles</h3>
-            <p>Custom lower thirds, kinetic typography, motion graphics elements, and green-screen background removal.</p>
-        </div>
-
-        <div class="skill-card">
-            <span class="skill-icon">💻</span>
-            <h3>Tech Integration</h3>
-            <p>Leveraging computer application principles (BCA background) to streamline workflows, asset management, and digital optimization.</p>
-        </div>
-    </div>
-
-    <div class="tools-wrapper">
-        <h4>Software & Tools</h4>
-        <div class="tool-tags">
-            <span class="tag">Adobe Premiere Pro</span>
-            <span class="tag">After Effects</span>
-            <span class="tag">CapCut Pro</span>
-            <span class="tag">DaVinci Resolve</span>
-            <span class="tag">Audition</span>
-        </div>
-    </div>
-</section>
-
-<!-- ================= PORTFOLIO SHOWCASE ================= -->
-<section id="portfolio">
-    <div class="section-header">
-        <h2>Featured <span>Work</span></h2>
-        <div class="section-line"></div>
-    </div>
-
-    <div class="portfolio-grid">
-        <div class="portfolio-card">
-            <div class="portfolio-thumb">▶</div>
-            <div class="portfolio-info">
-                <h3>Short-Form Viral Edit</h3>
-                <p>Dynamic cuts, custom kinetic text overlay, and immersive audio design.</p>
-            </div>
-        </div>
-
-        <div class="portfolio-card">
-            <div class="portfolio-thumb">▶</div>
-            <div class="portfolio-info">
-                <h3>YouTube Vlogs & Promo</h3>
-                <p>Pacing, color correction, background score mixing, and narrative flow.</p>
-            </div>
-        </div>
-
-        <div class="portfolio-card">
-            <div class="portfolio-thumb">▶</div>
-            <div class="portfolio-info">
-                <h3>Social Media Campaigns</h3>
-                <p>Sleek visual aesthetics designed for high engagement across digital channels.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact">
-    <div class="contact-container">
-        <div class="contact-info">
-            <h3>Let's Create <span>Together</span></h3>
-            <p>Have a project in mind or need a reliable editor for your content channel? Reach out and let's discuss details.</p>
-
-            <div class="info-item">
-                <div class="info-icon">📞</div>
-                <div class="info-text">
-                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">PHONE</span>
-                    <a href="tel:8310916290">+91 8310916290</a>
+    <!-- ==================== HERO SECTION ==================== -->
+    <header>
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    <span>BCA STUDENT & PROFESSIONAL VIDEO EDITOR</span>
+                </div>
+                <h1>P N <span class="lavender-text">KISHAN</span></h1>
+                <p>Merging computer science algorithms, procedural automation, and high-impact visual storytelling to craft viral short-form videos and cinematic edits.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Start a Project</a>
+                    <a href="#bca-tech" class="btn btn-secondary">Explore BCA Capabilities</a>
                 </div>
             </div>
 
-            <div class="info-item">
-                <div class="info-icon">✉️</div>
-                <div class="info-text">
-                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);">EMAIL</span>
-                    <a href="mailto:lilkishu23@gmail.com">lilkishu23@gmail.com</a>
+            <div class="hero-card animated-glow">
+                <div class="profile-header">
+                    <div class="profile-img-container">
+                        <img src="IMG_0514.JPG.jpeg" alt="P N Kishan">
+                    </div>
+                    <div class="profile-title">
+                        <h3>P N KISHAN</h3>
+                        <p>Video Editor / Developer</p>
+                    </div>
+                </div>
+
+                <ul class="tech-spec-list">
+                    <li class="tech-spec-item">
+                        <span>Academic Major</span>
+                        <span>BCA (Comp. Applications)</span>
+                    </li>
+                    <li class="tech-spec-item">
+                        <span>Core Editing Tools</span>
+                        <span>Premiere Pro / After Effects</span>
+                    </li>
+                    <li class="tech-spec-item">
+                        <span>Automation Tools</span>
+                        <span>Python Scripts / Expressions</span>
+                    </li>
+                    <li class="tech-spec-item">
+                        <span>Specialization</span>
+                        <span>Kinetic Typography & Pacing</span>
+                    </li>
+                    <li class="tech-spec-item">
+                        <span>Location</span>
+                        <span>Mysuru, Karnataka, India</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== BCA & COMPUTER SCIENCE INTEGRATION ==================== -->
+    <section id="bca-tech">
+        <div class="container">
+            <div class="section-header">
+                <h2>BCA Academic <span class="lavender-text">Software Synergy</span></h2>
+                <p>How computer science fundamentals elevate technical video production beyond standard post-production editing.</p>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="bca-grid">
+                <div class="bca-card">
+                    <div class="bca-icon">⚙️</div>
+                    <h3>Automated Batch Processing</h3>
+                    <p>Utilizing basic Python scripts and Command Line Tools (FFmpeg) to batch encode, resize multi-format videos, and extract dynamic audio waveforms seamlessly.</p>
+                    <div class="bca-tags">
+                        <span class="bca-tag">FFmpeg</span>
+                        <span class="bca-tag">Python Automation</span>
+                        <span class="bca-tag">Shell Scripting</span>
+                    </div>
+                </div>
+
+                <div class="bca-card">
+                    <div class="bca-icon">📐</div>
+                    <h3>Algorithmic Motion Design</h3>
+                    <p>Writing mathematical After Effects Expressions (Javascript-based) for automated elasticity, smooth bounce physics, and parameter-linked keyframing without manual labor.</p>
+                    <div class="bca-tags">
+                        <span class="bca-tag">JS Expressions</span>
+                        <span class="bca-tag">Math Curves</span>
+                        <span class="bca-tag">Keyframe Physics</span>
+                    </div>
+                </div>
+
+                <div class="bca-card">
+                    <div class="bca-icon">📂</div>
+                    <h3>Asset Database Management</h3>
+                    <p>Applying structured Database Management Systems (DBMS) logic to organize large asset libraries (SFX, stock footage, overlay LUTs) for ultra-fast timeline retrievals.</p>
+                    <div class="bca-tags">
+                        <span class="bca-tag">DBMS Logic</span>
+                        <span class="bca-tag">Structured Taxonomy</span>
+                        <span class="bca-tag">Asset Indexing</span>
+                    </div>
+                </div>
+
+                <div class="bca-card">
+                    <div class="bca-icon">🖥️</div>
+                    <h3>Render Hardware Optimization</h3>
+                    <p>Understanding CPU multi-threading, GPU CUDA acceleration, and RAM cache distribution to prevent video project bottlenecks during high-bitrate exports.</p>
+                    <div class="bca-tags">
+                        <span class="bca-tag">CUDA Tuning</span>
+                        <span class="bca-tag">Memory Management</span>
+                        <span class="bca-tag">Codec Architecture</span>
+                    </div>
+                </div>
+
+                <div class="bca-card">
+                    <div class="bca-icon">📊</div>
+                    <h3>Audience Analytics & Retention</h3>
+                    <p>Analyzing view-duration analytics and retention graphs computationally to pinpoint viewer drop-off frame rates and refine pacing accordingly.</p>
+                    <div class="bca-tags">
+                        <span class="bca-tag">Retention Mapping</span>
+                        <span class="bca-tag">Engagement Curves</span>
+                        <span class="bca-tag">Data-Driven Editing</span>
+                    </div>
+                </div>
+
+                <div class="bca-card">
+                    <div class="bca-icon">🌐</div>
+                    <h3>Web & Media Integration</h3>
+                    <p>Optimizing edited videos specifically for web embedding, progressive playback streaming codecs, and responsive HTML5 canvas rendering.</p>
+                    <div class="bca-tags">
+                        <span class="bca-tag">H.264 / H.265</span>
+                        <span class="bca-tag">Webm Formats</span>
+                        <span class="bca-tag">Bitrate Allocation</span>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <form class="contact-form" action="#" method="POST">
-            <div class="form-group">
-                <input type="text" placeholder="Your Name" required>
+    <!-- ==================== VIDEO EDITING SPECIALIZATIONS ==================== -->
+    <section id="skills" style="background: rgba(255, 255, 255, 0.01);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Editing <span class="lavender-text">Specializations</span></h2>
+                <p>High-demand post-production techniques engineered for maximum audience engagement.</p>
+                <div class="section-line"></div>
             </div>
-            <div class="form-group">
-                <input type="email" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-                <textarea placeholder="Tell me about your project..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="border:none; cursor:pointer;">Send Message</button>
-        </form>
-    </div>
-</section>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-    <p>© 2026 P N KISHAN. All Rights Reserved.</p>
-    <div style="margin-top: 15px;">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#portfolio">Work</a>
-        <a href="#contact">Contact</a>
-    </div>
-</footer>
+            <div class="skills-matrix">
+                <div class="skill-box">
+                    <div class="skill-number">01</div>
+                    <h3>Short-Form Viral Edits</h3>
+                    <p>Designing dynamic vertical videos (Instagram Reels, YouTube Shorts, TikTok) featuring auto-highlight captions, energetic pop-up graphics, and fast-paced sound effects.</p>
+                </div>
 
+                <div class="skill-box">
+                    <div class="skill-number">02</div>
+                    <h3>Kinetic Typography & SFX</h3>
+                    <p>Creating expressive text animations timed perfectly to speaker cadences, reinforced with layered sound effects (whooshes, risers, hits, ambient pads).</p>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-number">03</div>
+                    <h3>Color Grading & LUT Architecture</h3>
+                    <p>Standardizing color profiles, applying custom LUTs, balancing skin tones, and creating moody visual atmospheres for high-end cinematic appeal.</p>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-number">04</div>
+                    <h3>Long-Form Vlogs & Tech Edits</h3>
+                    <p>Structuring full-length YouTube videos with chapter markers, narrative B-roll cutaways, screen recordings, and smooth lower-third graphics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EDITING WORKFLOW PIPELINE ==================== -->
+    <section id="workflow">
+        <div class="container">
+            <div class="section-header">
+                <h2>Systematic <span class="lavender-text">Editing Pipeline</span></h2>
+                <p>A structured step-by-step workflow ensuring rapid turnarounds and technical precision.</p>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="workflow-timeline">
+                <div class="workflow-step">
+                    <span class="lavender-text" style="font-family: var(--font-heading); font-weight:700;">STAGE 01</span>
+                    <h4>Ingest & Assembly</h4>
+                    <p>Importing footage, syncing multi-cam audio tracks, organizing B-roll bins, and removing filler pauses.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="lavender-text" style="font-family: var(--font-heading); font-weight:700;">STAGE 02</span>
+                    <h4>Narrative Cut</h4>
+                    <p>Building the rough cut, trimming dead air, refining hook placement, and matching overall video pacing.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="lavender-text" style="font-family: var(--font-heading); font-weight:700;">STAGE 03</span>
+                    <h4>VFX & Motion</h4>
+                    <p>Inserting kinetic typography, dynamic zoom transitions, lower thirds, and motion graphics overlays.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="lavender-text" style="font-family: var(--font-heading); font-weight:700;">STAGE 04</span>
+                    <h4>Sound & Master</h4>
+                    <p>Audio levelling, EQ noise reduction, inserting custom sound effects (SFX), color grading, and final rendering.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECT COST ESTIMATOR ==================== -->
+    <section id="calculator" style="background: rgba(255, 255, 255, 0.01);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Project Scope & <span class="lavender-text">Estimator</span></h2>
+                <p>Get a instant ballpark estimate for your video production requirement.</p>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="calculator-container">
+                <div class="calc-controls">
+                    <div class="calc-group">
+                        <label>Target Video Length: <span id="lengthVal" class="lavender-text">60 Seconds</span></label>
+                        <input type="range" min="15" max="600" step="15" value="60" class="calc-slider" id="lengthSlider" oninput="updateEstimate()">
+                    </div>
+
+                    <div class="calc-group">
+                        <label>Video Category</label>
+                        <div class="calc-options">
+                            <div class="calc-btn active" onclick="setCategory(this, 1.0)">Reel / Short</div>
+                            <div class="calc-btn" onclick="setCategory(this, 1.5)">YouTube Vlog</div>
+                            <div class="calc-btn" onclick="setCategory(this, 2.0)">Promo / Commercial</div>
+                            <div class="calc-btn" onclick="setCategory(this, 2.5)">Motion Graphic Heavy</div>
+                        </div>
+                    </div>
+
+                    <div class="calc-group">
+                        <label>Included Add-Ons</label>
+                        <div class="calc-options">
+                            <div class="calc-btn active" id="sfxBtn" onclick="toggleAddon(this)">Sound SFX Layering</div>
+                            <div class="calc-btn active" id="textBtn" onclick="toggleAddon(this)">Auto / Kinetic Captions</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-output">
+                    <div>
+                        <span style="color: var(--color-muted); font-size: 0.9rem; text-transform: uppercase;">Estimated Project Quote</span>
+                        <div class="price-display" id="priceDisplay">₹1,500</div>
+                        <p style="color: var(--color-muted); font-size: 0.85rem;" id="timeDisplay">Estimated Turnaround: 24 - 48 Hours</p>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" style="margin-top: 20px;">Reserve Project Slot</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <div class="contact-details">
+                    <div>
+                        <h2>Let's Build Something <span class="lavender-text">Exceptional</span></h2>
+                        <p style="color: var(--color-muted); margin-top: 10px;">Available for video editing projects, channel revamps, and technical media consultations.</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <span>Phone Contact</span>
+                            <a href="tel:8310916290">+91 8310916290</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">
+                            <span>Email Address</span>
+                            <a href="mailto:lilkishu23@gmail.com">lilkishu23@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🎓</div>
+                        <div class="contact-text">
+                            <span>Academic Status</span>
+                            <a href="#">BCA Student • Technical Developer</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent.');">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Describe your video requirements, desired length, and timeline..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; border: none;">Send Project Proposal</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="container">
+            <p>© 2026 P N KISHAN. All Rights Reserved. Engineered with Pure White & Lavender Precision.</p>
+            <div style="margin-top: 15px;">
+                <a href="#about">About</a>
+                <a href="#bca-tech">BCA Integration</a>
+                <a href="#skills">Skills</a>
+                <a href="#calculator">Estimator</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Interactivity Script for Estimator -->
+    <script>
+        let categoryMultiplier = 1.0;
+        let sfxActive = true;
+        let textActive = true;
+
+        function setCategory(el, multiplier) {
+            document.querySelectorAll('.calc-options .calc-btn').forEach(btn => {
+                if (btn.id !== 'sfxBtn' && btn.id !== 'textBtn') {
+                    btn.classList.remove('active');
+                }
+            });
+            el.classList.add('active');
+            categoryMultiplier = multiplier;
+            updateEstimate();
+        }
+
+        function toggleAddon(el) {
+            el.classList.toggle('active');
+            if (el.id === 'sfxBtn') sfxActive = el.classList.contains('active');
+            if (el.id === 'textBtn') textActive = el.classList.contains('active');
+            updateEstimate();
+        }
+
+        function updateEstimate() {
+            const length = parseInt(document.getElementById('lengthSlider').value);
+            document.getElementById('lengthVal').innerText = length >= 60 ? (length / 60).toFixed(1) + ' Minutes' : length + ' Seconds';
+
+            let baseRate = (length / 30) * 500;
+            let total = baseRate * categoryMultiplier;
+
+            if (sfxActive) total += 300;
+            if (textActive) total += 300;
+
+            if (total < 800) total = 800;
+
+            document.getElementById('priceDisplay').innerText = '₹' + Math.round(total).toLocaleString('en-IN');
+
+            let hours = Math.ceil((length / 60) * 12) + 24;
+            document.getElementById('timeDisplay').innerText = `Estimated Turnaround: ${hours} - ${hours + 24} Hours`;
+        }
+    </script>
 </body>
 </html>
